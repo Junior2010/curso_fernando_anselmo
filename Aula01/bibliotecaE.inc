@@ -13,4 +13,17 @@ segment .data
 segment .base
     TAM_BUFFER  resb 0x1
 
-    ; parei na página 18
+segment .text
+    ; ---------------------------------------------
+    ; Saida do Resultado no Terminal
+    ; ---------------------------------------------
+    ; Entrada: valor String em BUFFER
+    ; Saida: valor no terminal
+    ; ---------------------------------------------
+    saidaResultado:
+        mov         eax, SYS_WRITE
+        mov         ebx, STD_OUT
+        mov         ecx, BUFFER
+        mov         edx, TAM_BUFFER
+        int         SYSCALL
+        ret
